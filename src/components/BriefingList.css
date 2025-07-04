@@ -1,0 +1,46 @@
+.briefing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.briefing-card.narrow {
+    flex: 1 1 45%;
+    max-width: 45%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    background-color: #f9f9f9;
+}
+
+.briefing-title {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.briefing-links a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.briefing-links a:hover {
+    text-decoration: underline;
+}
+
+.pdf-viewer {
+    animation: fadeIn 0.4s ease-in;
+    padding: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { fetchBriefings } from "./api/NotionAPI";
+import { groupBriefingsByYearMonth } from "./utils/groupByDate";
+import BriefingList from "./components/BriefingList";
 
 function App() {
+  const [briefings, setBriefings] = useState([]);
+
+  useEffect(() => {
+    async function loadData() {
+      const data = await fetchBriefings();
+      console.log("📦 Notion data:", data);  // Add this
+      setBriefings(data);
+    }
+    loadData();
+  }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>📄 Briefing Archive</h1>
+      <BriefingList rawBriefings={briefings} />
     </div>
   );
 }
