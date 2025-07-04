@@ -90,12 +90,12 @@ function BriefingList({ rawBriefings }) {
                                                                 {briefing.properties?.Name?.title?.[0]?.plain_text || "Untitled"}
                                                             </div>
                                                             <div className="briefing-links">
-                                                                <a
-                                                                    href="#"
+                                                                <button
                                                                     onClick={() => setSelectedPdfUrl(briefing.properties?.["PDF Link"]?.url)}
+                                                                    className="link-button"
                                                                 >
                                                                     View PDF
-                                                                </a>{" "}
+                                                                </button>
                                                                 |
                                                                 <a
                                                                     href={briefing.properties?.["Tweet URL"]?.url}

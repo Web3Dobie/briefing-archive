@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { fetchBriefings } from "./api/NotionAPI";
-import { groupBriefingsByYearMonth } from "./utils/groupByDate";
 import BriefingList from "./components/BriefingList";
 
 function App() {

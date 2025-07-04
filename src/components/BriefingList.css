@@ -44,3 +44,13 @@
         transform: translateY(0);
     }
 }
+
+.link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #4a4aff;
+    text-decoration: underline;
+    cursor: pointer;
+    font: inherit;
+}
