@@ -1,5 +1,3 @@
-import { Client } from "@notionhq/client";
-
 export async function fetchBriefings() {
     try {
         const res = await fetch("http://localhost:5000/api/briefings");
