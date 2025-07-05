@@ -99,14 +99,16 @@ function BriefingList({ rawBriefings }) {
                                                                                 setSelectedPdfUrl(briefing.properties?.["PDF Link"]?.url)
                                                                             }
                                                                             className="link-button"
+                                                                            type="button"
                                                                         >
                                                                             View PDF
                                                                         </button>
-                                                                        |
+                                                                        <span className="link-separator">|</span>
                                                                         <a
                                                                             href={briefing.properties?.["Tweet URL"]?.url}
                                                                             target="_blank"
                                                                             rel="noopener noreferrer"
+                                                                            className="link-anchor"
                                                                         >
                                                                             View Tweet
                                                                         </a>

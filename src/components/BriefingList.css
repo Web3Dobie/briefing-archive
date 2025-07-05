@@ -18,10 +18,13 @@
     margin-bottom: 0.25rem;
 }
 
-.briefing-links a {
-    color: #3b82f6;
-    text-decoration: none;
-    font-size: 0.95rem;
+.briefing-links {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: inherit;
+    /* Make sure both use the same font */
+    font-size: 1rem;
 }
 
 .briefing-links a:hover {
@@ -45,14 +48,29 @@
     }
 }
 
-.link-button {
+.link-button,
+.lonk-anchor {
     background: none;
     border: none;
-    padding: 0;
-    color: #4a4aff;
-    text-decoration: underline;
+    color: #1761a0;
+    font-size: 1rem;
+    font-family: inherit;
     cursor: pointer;
-    font: inherit;
+    text-decoration: underline;
+    padding: 0;
+    margin: 0;
+}
+
+.link-button:hover,
+.link-anchor:hover {
+    color: #05446c;
+    text-decoration: underline;
+}
+
+.link-separator {
+    margin: 0 0.3rem;
+    color: #888;
+    font-size: 1.05em;
 }
 
 .archive-section-header {
