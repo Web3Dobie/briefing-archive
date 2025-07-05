@@ -1,4 +1,4 @@
-const BASE_URL = "https://briefing-server.azurewebsites.net";
+const BASE_URL = "https://briefing-server-chhhgvh7gadkgugr.swedencentral-01.azurewebsites.net";
 
 export async function fetchBriefings() {
     try {
