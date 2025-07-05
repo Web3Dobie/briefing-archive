@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/7f9c2842-77c3-4b9c-b8d9-d9e90e3797fe/resourceGroups/HedgeFundAgent/providers/Microsoft.Web/sites/briefing-server",
+    "appService.deploySubpath": "server"
+}
