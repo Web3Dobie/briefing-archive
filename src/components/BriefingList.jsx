@@ -8,7 +8,6 @@ function BriefingList({ rawBriefings }) {
     const [openMonths, setOpenMonths] = useState({});
     const [selectedPdfUrl, setSelectedPdfUrl] = useState(null);
 
-    // Inside the component:
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const pdfParam = params.get("pdf");
@@ -30,7 +29,6 @@ function BriefingList({ rawBriefings }) {
         <div className="pdf-viewer">
             <button
                 onClick={() => {
-                    // Remove query string from URL without reloading
                     window.history.replaceState({}, "", window.location.pathname);
                     setSelectedPdfUrl(null);
                 }}
@@ -38,11 +36,9 @@ function BriefingList({ rawBriefings }) {
             >
                 ← Back to Archive
             </button>
-
             <h3 style={{ marginTop: "1rem" }}>
                 {selectedPdfUrl && decodeURIComponent(selectedPdfUrl.split("/").pop())}
             </h3>
-
             <iframe
                 src={selectedPdfUrl}
                 width="100%"
@@ -59,7 +55,7 @@ function BriefingList({ rawBriefings }) {
 
     return (
         <div>
-            {/* <h2>📁 Briefing Archive</h2> */}
+            <h3 className="archive-section-header">Year</h3>
             {Object.entries(grouped).map(([year, months]) => (
                 <div key={year}>
                     <h3
@@ -68,51 +64,65 @@ function BriefingList({ rawBriefings }) {
                     >
                         {openYears[year] ? "▼" : "▶"} {year}
                     </h3>
-                    {openYears[year] &&
-                        Object.entries(months).map(([month, days]) => {
-                            const key = `${year}-${month}`;
-                            return (
-                                <div key={key} style={{ paddingLeft: "1rem" }}>
-                                    <h4
-                                        onClick={() => toggleMonth(year, month)}
-                                        style={{ cursor: "pointer", userSelect: "none" }}
-                                    >
-                                        {openMonths[key] ? "▼" : "▶"} {month}
-                                    </h4>
-                                    {openMonths[key] &&
-                                        Object.entries(days).map(([day, items]) => (
-                                            <div key={day} style={{ paddingLeft: "1rem" }}>
-                                                <strong>{day}</strong>
-                                                <div className="briefing-cards">
-                                                    {items.map((briefing) => (
-                                                        <div className="briefing-card narrow" key={briefing.id}>
-                                                            <div className="briefing-title">
-                                                                {briefing.properties?.Name?.title?.[0]?.plain_text || "Untitled"}
-                                                            </div>
-                                                            <div className="briefing-links">
-                                                                <button
-                                                                    onClick={() => setSelectedPdfUrl(briefing.properties?.["PDF Link"]?.url)}
-                                                                    className="link-button"
-                                                                >
-                                                                    View PDF
-                                                                </button>
-                                                                |
-                                                                <a
-                                                                    href={briefing.properties?.["Tweet URL"]?.url}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                >
-                                                                    View Tweet
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    ))}
+                    {openYears[year] && (
+                        <>
+                            <h4 className="archive-section-header" style={{ marginLeft: "1rem" }}>
+                                Month
+                            </h4>
+                            {Object.entries(months).map(([month, days]) => {
+                                const key = `${year}-${month}`;
+                                return (
+                                    <div key={key} style={{ paddingLeft: "1rem" }}>
+                                        <h4
+                                            onClick={() => toggleMonth(year, month)}
+                                            style={{ cursor: "pointer", userSelect: "none" }}
+                                        >
+                                            {openMonths[key] ? "▼" : "▶"} {month}
+                                        </h4>
+                                        {openMonths[key] && (
+                                            <>
+                                                <div className="archive-section-header" style={{ marginLeft: "2rem" }}>
+                                                    Date
                                                 </div>
-                                            </div>
-                                        ))}
-                                </div>
-                            );
-                        })}
+                                                {Object.entries(days).map(([day, items]) => (
+                                                    <div key={day} style={{ paddingLeft: "1rem" }}>
+                                                        <strong>{day}</strong>
+                                                        <div className="briefing-cards">
+                                                            {items.map((briefing) => (
+                                                                <div className="briefing-card narrow" key={briefing.id}>
+                                                                    <div className="briefing-title">
+                                                                        {briefing.properties?.Name?.title?.[0]?.plain_text || "Untitled"}
+                                                                    </div>
+                                                                    <div className="briefing-links">
+                                                                        <button
+                                                                            onClick={() =>
+                                                                                setSelectedPdfUrl(briefing.properties?.["PDF Link"]?.url)
+                                                                            }
+                                                                            className="link-button"
+                                                                        >
+                                                                            View PDF
+                                                                        </button>
+                                                                        |
+                                                                        <a
+                                                                            href={briefing.properties?.["Tweet URL"]?.url}
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer"
+                                                                        >
+                                                                            View Tweet
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </>
+                    )}
                 </div>
             ))}
         </div>

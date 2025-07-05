@@ -54,3 +54,11 @@
     cursor: pointer;
     font: inherit;
 }
+
+.archive-section-header {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 0.4rem;
+    /* You can add margin-left as needed for visual hierarchy */
+}
