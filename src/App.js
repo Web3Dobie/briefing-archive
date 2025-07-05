@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { fetchBriefings } from "./api/NotionAPI";
 import BriefingList from "./components/BriefingList";
 
-// Trigger redeployment - no actual change
 
 function App() {
   const [briefings, setBriefings] = useState([]);
