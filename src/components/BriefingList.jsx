@@ -59,7 +59,7 @@ function BriefingList({ rawBriefings }) {
 
     return (
         <div>
-            <h2>📁 Briefing Archive</h2>
+            {/* <h2>📁 Briefing Archive</h2> */}
             {Object.entries(grouped).map(([year, months]) => (
                 <div key={year}>
                     <h3
